@@ -1,5 +1,5 @@
 #!/bin/bash
 
-source $HOME/dotfiles/nex-cli/lib/nex.sh
+source $HOME/dotfiles/nex-cli/lib/nex-cli.sh
 
 nex_cli "$@"
