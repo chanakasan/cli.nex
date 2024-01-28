@@ -1,12 +1,13 @@
 nex_cli() {
   local nex_cli_root=$HOME/dotfiles/nex-cli
-  local verb="$1"
-  local fn=_run_$verb
-  local param="$2"
-  if [ -z "$verb" ]; then
+  local a1="$1"
+  local a2="$2"
+  local a3="$3"
+  local fn=_run_$a1
+  if [ -z "$a1" ]; then
     print_usage
-  elif [ "$verb" == "install" ]; then
-    _run_install_script $param
+  elif [ "$a1" == "install" ]; then
+    _run_install_script $a2 $a3
   elif [[ $(type -t $fn ) == function ]]; then
     $fn "${@:2}"
   else
@@ -20,10 +21,12 @@ print_usage() {
 
 _run_install_script() {
   local full_script_name=install-$1.sh
+  local arg1="$2"
+  local 
   local file_path=$nex_script_path/src/$full_script_name
   if [ -f $file_path ]; then
     echo "Running $full_script_name"
-    bash  $file_path
+    bash  $file_path $arg1
   else
     echo "script not found: $file_path"
   fi
