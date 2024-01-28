@@ -22,7 +22,6 @@ print_usage() {
 _run_install_script() {
   local full_script_name=install-$1.sh
   local arg1="$2"
-  local 
   local file_path=$nex_script_path/src/$full_script_name
   if [ -f $file_path ]; then
     echo "Running $full_script_name"
