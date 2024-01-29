@@ -35,6 +35,19 @@ _run_install_script() {
   fi
 }
 
+_reset() {
+  local dir=$1
+  local file=$HOME/dotfiles/$dir/setup/install.sh
+  if [ -z "$dir" ]; then
+    echo aborting
+  elif [ -f $file ]; then
+    echo " Running $file"
+    sh $file
+  else
+    echo " script not found: $file"
+  fi
+}
+
 _hello() {
   echo Hello $1 !
 }
