@@ -24,7 +24,7 @@ clone() {
 
 symlink() {
   echo " => Creating a symlink at $symlink_path"
-  sudo ln -s $src_dir/bin/nex $symlink_path
+  $src_dir/setup/symlink.sh
 }
 
 main

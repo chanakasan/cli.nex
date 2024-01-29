@@ -16,7 +16,7 @@ nex_cli() {
 }
 
 print_usage() {
-  echo "Usage: nex <install|run> <script_name>"
+  echo " Usage: nex <command> <arg>"
 }
 
 _run_install_script() {
@@ -50,4 +50,8 @@ _reset() {
 
 _hello() {
   echo Hello $1 !
+}
+
+_init() {
+  echo hi
 }
