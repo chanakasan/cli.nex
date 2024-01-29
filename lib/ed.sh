@@ -1,8 +1,8 @@
 #!/bin/bash
 
-source $nex_bash_path/lib/_ed_vscode.sh
+source $nex_cli_path/lib/ed_vscode.sh
 
-main() {
+nx_ed() {
   local a1="$1"
   local a2="$2"
   local fn=_ed_$a1
@@ -63,6 +63,3 @@ edit_bashrc() {
 edit_vimrc() {
   vim $HOME/.vimrc
 }
-
-# _end_
-main "$@"

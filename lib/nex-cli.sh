@@ -53,5 +53,5 @@ _hello() {
 }
 
 _init() {
-  echo hi
+  sh $nex_cli_root/lib/nex-init.sh
 }

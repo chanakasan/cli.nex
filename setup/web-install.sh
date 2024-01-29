@@ -24,7 +24,7 @@ clone() {
 
 symlink() {
   echo " => Creating a symlink at $symlink_path"
-  $src_dir/setup/symlink.sh
+  sh $src_dir/setup/symlink.sh
 }
 
 main

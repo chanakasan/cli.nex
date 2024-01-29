@@ -1,12 +1,12 @@
 #!/bin/bash
 
-source
+source $nex_cli_path/lib/ed.sh
 
 main() {
 	if [ "$nex_use_tmux" == "true" ]; then
 		tmux popup -E -d '#{pane_current_path}' -w 90% -h 100% -- nx_ed $@
 	else
-		_ed $@
+		nx_ed $@
 	fi
 }
 
