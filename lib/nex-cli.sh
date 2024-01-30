@@ -4,16 +4,22 @@ nex_cli() {
   local a2="$2"
   local a3="$3"
   local fn=_$a1
+  local cmd='_nx_'$a1'_'$a2
+  local is_func=$(is_function $fn)
+  local is_cmd=$(is_command $cmd)
   if [ -z "$a1" ]; then
     print_usage
-  elif [[ $(type -t $fn ) == function ]]; then
+  elif [ "$is_func" == "true" ]; then
     $fn "${@:2}"
+  elif [ "$is_cmd" == "true" ]; then
+    $cmd "${@:3}"
   elif [ "$a1" == "install" ]; then
     _run_install_script $a2 $a3
   else
     print_usage
   fi
 }
+
 
 print_usage() {
   echo " Usage: nex <command> <arg>"

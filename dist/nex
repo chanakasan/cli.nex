@@ -1,5 +1,7 @@
 #!/bin/bash
 
-source $HOME/dotfiles/nex-cli/lib/nex-cli.sh
+nex_cli_root=$HOME/dotfiles/nex-cli
+source $nex_cli_root/lib/utils.sh
+source $nex_cli_root/lib/nex-cli.sh
 
 nex_cli "$@"
