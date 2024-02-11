@@ -2,9 +2,9 @@ is_command() {
   local name="$1"
   if ! command -v $name &> /dev/null
   then
-    echo "false"
+    echo false
   else
-    echo "true"
+    echo true
   fi
 }
 

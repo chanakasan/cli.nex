@@ -13,9 +13,9 @@ nex_cli() {
   elif [ "$(is_function $fn)" == "true" ]; then
     $fn1 "${@:2}"
   elif [ "$(is_command $cmd1)" == "true" ]; then
-    $cmd1 "${@:2}"
+    $cmd1 "${@:3}"
   elif [ "$(is_command $cmd2)" == "true" ]; then
-    $cmd2 "${@:3}"
+    $cmd2 "${@:2}"
   else
     print_usage
   fi
