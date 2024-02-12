@@ -1,5 +1,7 @@
+nex_cli_root=$HOME/dotfiles/nex-cli
+source $nex_cli_root/lib/support/utils.sh
+
 nex_cli() {
-  local nex_cli_root=$HOME/dotfiles/nex-cli
   local main_cmd="nex $1 $2 $3"
   local a1="$1"
   local a2="$2"
