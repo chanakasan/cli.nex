@@ -41,7 +41,7 @@ is_function() {
 }
 
 _hello() {
-  echo Hello $1 !
+  echo " [nex] Hello $1 !"
 }
 
 main "$@"
