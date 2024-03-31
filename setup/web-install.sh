@@ -3,28 +3,32 @@
 set -e
 
 main() {
-  local src_dir=$HOME/dotfiles/nex-cli
+  local install_dir=$HOME/dotfiles/nex-cli
   local git_url="https://github.com/chanakasan/nex-cli"
-  local symlink_path=/usr/local/bin/nex
+  start
+  # clone_repo
+  create_symlink
+  finish
+}
+
+start() {
   echo " Nex CLI"
-  # abort_if_dir_exist
-  echo ""
-  # clone
-  symlink
-  echo ""
+  echo
+}
+
+finish() {
   echo " done"
-  echo ""
+  echo
 }
 
-clone() {
+clone_repo() {
   echo " => Cloning $git_url"
-  mkdir -p $src_dir
-  git clone $git_url $src_dir
+  mkdir -p $install_dir
+  git clone $git_url $install_dir
 }
 
-symlink() {
-  echo " => Creating a symlink at $symlink_path"
-  sh $src_dir/setup/symlink.sh
+create_symlink() {
+  sh $install_dir/setup/symlink.sh
 }
 
 main

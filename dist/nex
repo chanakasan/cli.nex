@@ -21,6 +21,7 @@ main() {
   fi
 }
 
+# start Lib
 is_command() {
   local name="$1"
   if ! command -v $name &> /dev/null
@@ -39,6 +40,8 @@ is_function() {
     echo false
   fi
 }
+# end Lib
+
 
 _hello() {
   echo " [nex] Hello $1 !"
