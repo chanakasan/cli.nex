@@ -15,7 +15,7 @@ clone_repo() {
     echo " Dir exists: $install_dir"
     echo " Please remove it first" 
     exit 1
-  end
+  fi
 
   mkdir -p $install_dir
   git clone $git_url $install_dir
