@@ -18,7 +18,9 @@ main() {
   fi
 
   echo " Updating Plugin - $plugin_name"
+  echo
   git pull --rebase origin $branch_name
+  echo
   echo " done"
   echo
 }
