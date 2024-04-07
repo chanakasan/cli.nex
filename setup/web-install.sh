@@ -3,8 +3,8 @@
 set -e
 
 main() {
-  local install_dir=$HOME/dotfiles/nex-cli
-  local git_url="https://github.com/chanakasan/nex-cli"
+  local install_dir=$HOME/dotfiles/cli.nexplugin
+  local git_url="https://github.com/chanakasan/cli.nexplugin"
   clone_repo
   run_install
 }
