@@ -42,7 +42,7 @@ root_path() {
 }
 
 run_script() {
-  bash $(root_path)/src/$1 $2 $3
+  bash $(root_path)/src/$1 ${@:2}
 }
 
 hello_cli() {
