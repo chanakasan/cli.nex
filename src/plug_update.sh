@@ -26,9 +26,9 @@ run_git_pull() {
   local branch_name=$(git rev-parse --abbrev-ref HEAD)
   local output=$(git pull origin $branch_name 2>&1)
   if [[ $output == *"Already up to date."* ]]; then
-      echo "no new updates"
+      echo " no new updates"
   else
-      echo "plugin updated"
+      echo " plugin updated"
   fi
 }
 
