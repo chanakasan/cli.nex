@@ -8,7 +8,6 @@ main() {
   local base_dir=$HOME/dotfiles
   local plugin_path=$base_dir/$plugin_name
   cd $plugin_path
-  local branch_name=$(git rev-parse --abbrev-ref HEAD)
 
   if [ -n "$(git status --porcelain)" ]; then
     echo " Please commit changes first"
@@ -18,11 +17,19 @@ main() {
   fi
 
   echo " Updating Plugin - $plugin_name"
-  echo
-  git pull --rebase origin $branch_name
-  echo
+  run_git_pull
   echo " done"
   echo
+}
+
+run_git_pull() {
+  local branch_name=$(git rev-parse --abbrev-ref HEAD)
+  local output=$(git pull origin $branch_name 2>&1)
+  if [[ $output == *"Already up to date."* ]]; then
+      echo "no new updates"
+  else
+      echo "plugin updated"
+  fi
 }
 
 main $@
