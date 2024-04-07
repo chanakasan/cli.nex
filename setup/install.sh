@@ -3,13 +3,16 @@
 set -e
 
 main() {
+  local plugin_name=cli.nexplugin
+  local root_dir=$HOME/dotfiles
+  local install_dir=$root_dir/$plugin_name
   start
   create_symlink
   finish
 }
 
 start() {
-  echo " Nex CLI"
+  echo " Installing Nex CLI"
   echo
 }
 
@@ -19,7 +22,6 @@ finish() {
 }
 
 create_symlink() {
-  local install_dir=$HOME/dotfiles/nex-cli
   local symlink_src=$install_dir/dist/nex
   local symlink_dest=/usr/local/bin/nex
   echo " => Creating a symlink at $symlink_dest"
