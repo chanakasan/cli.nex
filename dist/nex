@@ -2,16 +2,20 @@
 
 main() {
   local main_cmd="nex $1 $2 $3"
+  local script_1=$1'_'$2.sh
+  local script_2=$1.sh
   local cmd_1=_nx_$1'_'$2
   local cmd_2=_nx_$1
   if [ -z "$1" ]; then
-    echo " usage: nex <1> <2> <3>"
+    hello_cli
+  elif is_script "$script_1"; then
+    run_script $script_1 "${@:3}"
+  elif is_script "$script_1"; then
+    run_script $script_2 "${@:2}"
   elif is_cmd $cmd_1; then
     $cmd_1 "${@:3}"
   elif is_cmd $cmd_2; then
     $cmd_2 "${@:2}"
-  elif [ "$1" == "hello" ]; then
-    _hello
   else
     echo " not_found: $main_cmd"
   fi
@@ -25,8 +29,26 @@ is_cmd() {
   fi
 }
 
-_hello() {
+is_script() {
+  if [[ -f "$(root_path)/src/$1" ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+root_path() {
+  echo $HOME/dotfiles/cli.nexplugin
+}
+
+run_script() {
+  bash $(root_path)/src/$1 $2 $3
+}
+
+hello_cli() {
   echo " Hello Nex CLI !"
+  echo " Usage: nex <1> <2> <3>"
+  echo
 }
 
 main "$@"
