@@ -13,7 +13,6 @@ main() {
 
 start() {
   echo " Installing Nex CLI"
-  echo
 }
 
 finish() {
@@ -23,11 +22,14 @@ finish() {
 
 create_symlink() {
   local symlink_src=$install_dir/dist/nex
-  local symlink_dest=/usr/local/bin/nex
-  echo " => Creating a symlink at $symlink_dest"
-  sudo ln -nfs $symlink_src $symlink_dest
-  echo " => Symlink created"
-  echo
-}  
+  local symlink_dest_dir=/usr/local/bin
+  local symlink_1=$symlink_dest_dir/nex
+  local symlink_2=$symlink_dest_dir/nx
+  sudo ln -nfs $symlink_src $symlink_1
+  sudo ln -nfs $symlink_src $symlink_2
+  echo " => created symlinks at $symlink_dest_dir"
+  echo " * $symlink_1"
+  echo " * $symlink_2"
+}
 
 main
