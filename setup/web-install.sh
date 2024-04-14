@@ -2,11 +2,8 @@
 
 set -e
 
-# config
-nex_root_path=$HOME/dotfiles
-# end config
-
 main() {
+  local nex_root_path=$HOME/dotfiles
   local install_dir=$nex_root_path/cli.nex
   local git_url="https://github.com/chanakasan/cli.nexplugin"
   clone_repo

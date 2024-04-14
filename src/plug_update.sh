@@ -4,9 +4,8 @@ main() {
     echo
     exit 1
   fi
-  local plugin_name=$1.nexplugin
-  local base_dir=$HOME/dotfiles/plugins
-  local plugin_path=$base_dir/$plugin_name
+  local plugin_name=$1.plugin
+  local plugin_path=$(nex _plugin_path "$1")
   cd $plugin_path
 
   if [ -n "$(git status --porcelain)" ]; then

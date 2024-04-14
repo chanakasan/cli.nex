@@ -3,17 +3,18 @@
 main() {
   load_config
   local main_cmd="nex $1 $2 $3"
+  local fn_1=fn_$1
   local script_1=$1'_'$2.sh
   local script_2=$1.sh
   local cmd_1=_nx_$1'_'$2
   local cmd_2=_nx_$1
-  if [ "$1" == "_config" ]; then
-    nex_config
+  if [ "$(type -t $fn_1)" == function ]; then
+    $fn_1 ${@:2}
     return 0
   fi
 
   if [ -z "$1" ]; then
-    hello_cli
+    fn_hello
     return 1
   fi
 
@@ -39,38 +40,37 @@ is_cmd() {
 }
 
 is_script() {
-  if [[ -f "$(root_dir)/src/$1" ]]; then
+  if [[ -f "$(nex_cli_path)/src/$1" ]]; then
     return 0
   else
     return 1
   fi
 }
 
-root_dir() {
-  local nex_root_path=$HOME/dotfiles
-  echo $nex_root_path/cli.nex
-}
-
 run_script() {
-  bash $(root_dir)/src/$1 ${@:2}
+  bash $(nex_cli_path)/src/$1 ${@:2}
 }
 
-hello_cli() {
+load_config() {
+  eval $(fn__config)
+}
+
+fn_hello() {
   echo " Hello Nex CLI !"
   echo " Usage: nex <1> <2> <3>"
   echo
 }
 
-load_config() {
-  eval $(nex_config)
+fn__plugin_path() {
+  echo $nex_plugin_base/$1.plugin
 }
 
-nex_config() {
+fn__config() {
   cat <<EOF
 export nex_root_path=$HOME/dotfiles
 export nex_cli_path=$nex_root_path/cli.nex
-export nex_plugin_base=$HOME/dotfiles/plugins
-export nex_mod_base=$HOME/dotfiles/mods
+export nex_plugin_base=$nex_root_path/plugins
+export nex_mod_base=$nex_root_path/mods
 EOF
 }
 

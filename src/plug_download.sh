@@ -9,7 +9,7 @@ main() {
 
   local host_user=$(whoami)
   local plugin_name="$1.plugin"
-  cd $(nex_plugin_base)
+  cd $nex_plugin_base
   echo "Downloading Plugin - $plugin_name"
 
   if [[ $host_user == "chk" ]]; then
@@ -20,10 +20,6 @@ main() {
 
   echo done
   echo
-}
-
-plugins_path() {
-  echo $HOME/dotfiles/plugins
 }
 
 main $@

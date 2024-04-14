@@ -1,5 +1,10 @@
 set -e
 
-eval $(nex _config)
+echo "------------------------"
+echo "$(nex _config)"
+echo "------------------------"
 
-echo " config loaded"
+echo
+eval "$(nex _config)"
+echo "config eval passed"
+echo
