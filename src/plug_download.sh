@@ -6,8 +6,8 @@ main() {
   fi
 
   local host_user=$(whoami)
-  local plugin_name="$1.nexplugin"
-  cd $(root_path)
+  local plugin_name="$1.plugin"
+  cd $(plugins_path)
   echo "Downloading Plugin - $plugin_name"
 
   if [[ $host_user == "chk" ]]; then
@@ -20,8 +20,8 @@ main() {
   echo
 }
 
-root_path() {
-  echo $HOME/dotfiles
+plugins_path() {
+  echo $HOME/dotfiles/plugins
 }
 
 main $@

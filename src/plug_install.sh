@@ -4,8 +4,8 @@ main() {
     echo
     exit 1
   fi
-  local plugin_name=$1.nexplugin
-  local base_dir=$HOME/dotfiles
+  local plugin_name=$1.plugin
+  local base_dir=$HOME/dotfiles/plugins
   local file=$base_dir/$plugin_name/setup/install.sh
   if [ -f $file ]; then
     echo " Running setup $file"

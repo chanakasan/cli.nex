@@ -5,7 +5,7 @@ main() {
     exit 1
   fi
   local plugin_name=$1.nexplugin
-  local base_dir=$HOME/dotfiles
+  local base_dir=$HOME/dotfiles/plugins
   local plugin_path=$base_dir/$plugin_name
   cd $plugin_path
 

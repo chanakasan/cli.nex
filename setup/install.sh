@@ -1,11 +1,12 @@
 #!/bin/bash
 
+source $(dirname $0)/../dist/config.sh
+
 set -e
 
 main() {
-  local plugin_name=cli.nexplugin
-  local root_dir=$HOME/dotfiles
-  local install_dir=$root_dir/$plugin_name
+  local dest_name=cli.nex
+  local install_dir=$(nex_root_path)/$dest_name
   start
   create_symlink
   finish

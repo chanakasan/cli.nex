@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $
+
 main() {
   local main_cmd="nex $1 $2 $3"
   local script_1=$1'_'$2.sh
@@ -30,19 +32,19 @@ is_cmd() {
 }
 
 is_script() {
-  if [[ -f "$(root_path)/src/$1" ]]; then
+  if [[ -f "$(get_root_path)/src/$1" ]]; then
     return 0
   else
     return 1
   fi
 }
 
-root_path() {
-  echo $HOME/dotfiles/cli.nexplugin
+get_root_path() {
+  echo $(nex_root_path)/cli.nex
 }
 
 run_script() {
-  bash $(root_path)/src/$1 ${@:2}
+  bash $(get_root_path)/src/$1 ${@:2}
 }
 
 hello_cli() {
