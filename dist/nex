@@ -1,6 +1,8 @@
 #!/bin/bash
 
+# config
 nex_root_path=$HOME/dotfiles
+# end config
 
 main() {
   local main_cmd="nex $1 $2 $3"
