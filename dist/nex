@@ -1,20 +1,25 @@
 #!/bin/bash
 
-# config
-nex_root_path=$HOME/dotfiles
-# end config
-
 main() {
+  load_config
   local main_cmd="nex $1 $2 $3"
   local script_1=$1'_'$2.sh
   local script_2=$1.sh
   local cmd_1=_nx_$1'_'$2
   local cmd_2=_nx_$1
+  if [ "$1" == "_config" ]; then
+    nex_config
+    return 0
+  fi
+
   if [ -z "$1" ]; then
     hello_cli
-  elif is_script "$script_1"; then
+    return 1
+  fi
+
+  if is_script "$script_1"; then
     run_script $script_1 "${@:3}"
-  elif is_script "$script_1"; then
+  elif is_script "$script_2"; then
     run_script $script_2 "${@:2}"
   elif is_cmd $cmd_1; then
     $cmd_1 "${@:3}"
@@ -42,6 +47,7 @@ is_script() {
 }
 
 root_dir() {
+  local nex_root_path=$HOME/dotfiles
   echo $nex_root_path/cli.nex
 }
 
@@ -53,6 +59,17 @@ hello_cli() {
   echo " Hello Nex CLI !"
   echo " Usage: nex <1> <2> <3>"
   echo
+}
+
+load_config() {
+  eval $(nex_config)
+}
+
+nex_config() {
+  cat <<EOF
+export nex_root_path=$HOME/dotfiles
+export nex_cli_path=$nex_root_path/cli.nex
+EOF
 }
 
 main "$@"
