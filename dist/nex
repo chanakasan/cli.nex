@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $
+nex_root_path=$HOME/dotfiles
 
 main() {
   local main_cmd="nex $1 $2 $3"
@@ -32,19 +32,19 @@ is_cmd() {
 }
 
 is_script() {
-  if [[ -f "$(get_root_path)/src/$1" ]]; then
+  if [[ -f "$(root_dir)/src/$1" ]]; then
     return 0
   else
     return 1
   fi
 }
 
-get_root_path() {
-  echo $(nex_root_path)/cli.nex
+root_dir() {
+  echo $nex_root_path/cli.nex
 }
 
 run_script() {
-  bash $(get_root_path)/src/$1 ${@:2}
+  bash $(root_dir)/src/$1 ${@:2}
 }
 
 hello_cli() {
