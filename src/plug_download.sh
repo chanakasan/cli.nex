@@ -1,6 +1,8 @@
 source $(nex _config)
 
 main() {
+  mkdir -p $nex_plugin_base
+
   if [[ -z $1 ]]; then
     echo " Usage: nex download plug git|mux|run|tools"
     echo
