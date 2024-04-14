@@ -1,4 +1,4 @@
-eval "$(nex _config)"
+source $(nex _config)
 
 main() {
   if [[ -z $1 ]]; then

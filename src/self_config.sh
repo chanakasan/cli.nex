@@ -8,6 +8,6 @@ echo "$(<$tmp_file)"
 echo "------------------------"
 
 echo
-source "$(nex _config)"
+source $(nex _config)
 echo "config eval passed"
 echo
