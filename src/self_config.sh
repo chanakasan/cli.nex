@@ -1,10 +1,13 @@
 set -e
 
+tmp_file=$(nex _config)
+echo "config file"
+
 echo "------------------------"
-echo "$(nex _config)"
+echo "$(<$tmp_file)"
 echo "------------------------"
 
 echo
-eval "$(nex _config)"
+source "$(nex _config)"
 echo "config eval passed"
 echo

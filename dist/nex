@@ -1,7 +1,6 @@
 #!/bin/bash
 
 main() {
-  load_config
   local main_cmd="nex $1 $2 $3"
   local fn_1=fn_$1
   local script_1=$1'_'$2.sh
@@ -40,7 +39,7 @@ is_cmd() {
 }
 
 is_script() {
-  if [[ -f "$(nex_cli_path)/src/$1" ]]; then
+  if [[ -f "$(get_cli_path)/src/$1" ]]; then
     return 0
   else
     return 1
@@ -48,11 +47,7 @@ is_script() {
 }
 
 run_script() {
-  bash $(nex_cli_path)/src/$1 ${@:2}
-}
-
-load_config() {
-  eval $(fn__config)
+  bash $(get_cli_path)/src/$1 ${@:2}
 }
 
 fn_hello() {
@@ -61,17 +56,40 @@ fn_hello() {
   echo
 }
 
-fn__plugin_path() {
-  echo $nex_plugin_base/$1.plugin
+fn__config() {
+  get_config_path
 }
 
-fn__config() {
-  cat <<EOF
-export nex_root_path=$HOME/dotfiles
-export nex_cli_path=$nex_root_path/cli.nex
-export nex_plugin_base=$nex_root_path/plugins
-export nex_mod_base=$nex_root_path/mods
-EOF
+fn__root() {
+  get_root
+}
+
+fn__plugin() {
+  get_plugin_path $1
+}
+
+fn__mod() {
+  get_mod_path $1
+}
+
+get_root() {
+  echo $HOME/dotfiles 
+}
+
+get_cli_path() {
+  echo $(get_root)/cli.nex
+}
+
+get_config_path() {
+  echo $(get_cli_path)/dist/config.sh
+}
+
+get_plugin_path() {
+  echo $(get_root)/plugins/$1.plugin
+}
+
+get_mod_path() {
+  echo $(get_root)/mods/$1.mod
 }
 
 main "$@"
