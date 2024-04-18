@@ -1,5 +1,5 @@
 start() {
-  echo " Installing - $this_plugin_name"
+  echo " Uninstalling - $this_plugin_name"
 }
 
 init_script_vars() {
@@ -9,7 +9,6 @@ init_script_vars() {
   this_plugin_path=$(nex _plugin $this_name)
   this_start_text='__nex_'$this_name'_start'
   this_end_text='__nex_'$this_name'_end'
-  this_middle_text="source $this_plugin_path/src/entry.sh"
 }
 
 validate() {
@@ -29,7 +28,6 @@ validate_script_vars() {
   require_param "this_bashrc"
   require_param "this_start_text"
   require_param "this_end_text"
-  require_param "this_middle_text"
 }
 
 finish() {
@@ -39,18 +37,6 @@ finish() {
 
 remove_from_bashrc() {
   sed -i '/#'$this_start_text'/,/#'$this_end_text'/{d}' $this_bashrc
-}
-
-copy_to_bashrc() {
-  local content="$1"
-  if [ -z "$this_middle_text" ]; then
-    echo " copy_to_bashrc error"
-    exit 1
-  fi
-  echo "" >> $this_bashrc
-  echo "#$this_start_text" >> $this_bashrc
-  echo "$this_middle_text" >> $this_bashrc
-  echo "#$this_end_text" >> $this_bashrc
 }
 
 require_param() {

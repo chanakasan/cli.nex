@@ -72,8 +72,12 @@ fn__mod() {
   get_mod_path $1
 }
 
+get_home() {
+  echo $HOME
+}
+
 get_root() {
-  echo $HOME/dotfiles 
+  echo $(get_home)/dotfiles 
 }
 
 get_cli_path() {
@@ -89,7 +93,11 @@ get_plugin_path() {
 }
 
 get_mod_path() {
-  echo $(get_root)/mods/$1.mod
+  if [[ $1 == "u" ]] || [[ $1 == "user" ]]; then
+    echo $(get_home)/user_mod
+  else
+    echo $(get_root)/mods/$1.mod
+  fi 
 }
 
 main "$@"
