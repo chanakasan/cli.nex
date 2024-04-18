@@ -39,7 +39,7 @@ is_cmd() {
 }
 
 is_script() {
-  if [[ -f "$(get_cli_path)/src/$1" ]]; then
+  if [[ -f "$(get_cli_path)/src/script/$1" ]]; then
     return 0
   else
     return 1
@@ -47,7 +47,7 @@ is_script() {
 }
 
 run_script() {
-  bash $(get_cli_path)/src/$1 ${@:2}
+  bash $(get_cli_path)/src/script/$1 ${@:2}
 }
 
 fn_hello() {
