@@ -117,7 +117,11 @@ get_root_path() {
 }
 
 get_plugin_path() {
-  echo $(get_nex_root)/plugins/$1.plugin
+  if [ -z "$1" ]; then
+    echo $(get_nex_root)/plugins
+  else
+    echo $(get_nex_root)/plugins/$1.plugin
+  fi
 }
 
 get_mod_path() {
