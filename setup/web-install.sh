@@ -2,13 +2,8 @@
 
 set -e
 
-base_dir="$(dirname "${BASH_SOURCE[0]}")/.."
-echo BASH_SOURCE: $BASH_SOURCE
-echo zero: $0
-echo base: $base_dir 
-echo pwd: $pwd
-exit 1
-source $base_dir/src/init/init.sh
+TEMP_CONFIG=$HOME/dotfiles/cli.nex/setup/config.sh
+source $TEMP_CONFIG
 
 main() {
   local install_dir=$nex_cli_base
