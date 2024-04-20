@@ -3,9 +3,10 @@
 set -e
 
 base_dir="$(dirname "${BASH_SOURCE[0]}")/.."
-echo $BASH_SOURCE
-echo $0
-echo $base_dir 
+echo BASH_SOURCE: $BASH_SOURCE
+echo zero: $0
+echo base: $base_dir 
+echo pwd: $pwd
 exit 1
 source $base_dir/src/init/init.sh
 
