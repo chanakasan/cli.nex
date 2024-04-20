@@ -73,8 +73,7 @@ fn_hello() {
 }
 
 fn_init() {
-  export nex_support=$(get_cli_path)/support
-  bash $nex_support/install/run_default.sh "cli.nex"
+  bash $(get_cli_path)/setup/init.sh
 }
 
 fn__config() {

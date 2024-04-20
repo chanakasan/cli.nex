@@ -12,8 +12,7 @@ main() {
   echo " Installing - Nex CLI"
   
   if [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" ]]; then
-    symlink_dest_dir=$HOME/bin
-    ln -nfs $symlink_src $symlink_dest_dir/nex
+    :
   else
     sudo ln -nfs $symlink_src $symlink_dest_dir/nex
   fi
