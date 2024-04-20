@@ -1,4 +1,4 @@
 source $(nex _config)
 
-cd $nex_cli_base
+cd $(nex _root cli)
 git pull origin main
