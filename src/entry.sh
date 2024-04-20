@@ -1,5 +1,3 @@
-echo "Nex Cli Ready"
-
 source $(nex _config)
 
 for f in $nex_plugin_base/*.plugin; do
