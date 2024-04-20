@@ -1,4 +1,4 @@
-export nex_root=$(nex _root)
+export nex_root=$HOME/dotfiles
 export nex_cli_base=$nex_root/cli.nex
 export nex_support=$nex_cli_base/support
 export nex_plugin_base=$nex_root/plugins

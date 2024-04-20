@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $nex_cli_base/src/config.sh
+
 main() {
   local main_cmd="nex $1 $2 $3"
   local fn_1=fn_$1
@@ -93,15 +95,15 @@ fn__mod() {
 }
 
 get_home() {
-  echo "$(get_nex_root)/.."
+  echo "$HOME"
 }
 
 get_nex_root() {
-  echo $HOME/dotfiles 
+  echo $nex_root
 }
 
 get_cli_path() {
-  echo $(get_nex_root)/cli.nex
+  echo $nex_cli_base
 }
 
 get_config_path() {
