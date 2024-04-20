@@ -2,8 +2,8 @@
 
 set -e
 
-base_path="$(dirname $0)/.."
-source $base_path/src/init/init.sh
+base_dir="$(dirname "${BASH_SOURCE[0]}")/.."
+source $base_dir/src/init/init.sh
 
 main() {
   local install_dir=$nex_cli_base
