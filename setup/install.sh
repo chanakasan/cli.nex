@@ -2,7 +2,6 @@
 
 set -e
 
-$(dirname $0)
 nex_root_path=$HOME/dotfiles
 symlink_src=$nex_root_path/cli.nex/dist/nex
 symlink_dest_dir=/usr/local/bin

@@ -3,8 +3,9 @@
 main() {
   local main_cmd="nex $1 $2 $3"
   local fn_1=fn_$1
-  local script_1=$1'_'$2.sh
-  local script_2=$1.sh
+  local script_1=$1'_'$2'_'$3.sh
+  local script_2=$1'_'$2.sh
+  local script_3=$1.sh
   local cmd_1=_nx_$1'_'$2
   local cmd_2=_nx_$1
   if [ "$(type -t $fn_1)" == function ]; then
@@ -17,17 +18,13 @@ main() {
     return 1
   fi
 
-  if is_script "$script_1"; then
-    run_script $script_1 "${@:3}"
-  elif is_script "$script_2"; then
-    run_script $script_2 "${@:2}"
-  elif is_cmd $cmd_1; then
-    $cmd_1 "${@:3}"
-  elif is_cmd $cmd_2; then
-    $cmd_2 "${@:2}"
-  else
-    echo " not_found: $main_cmd"
-  fi
+  try_scripts
+  try_commands
+
+
+
+  
+  echo " not_found: $main_cmd"
 }
 
 is_cmd() {
@@ -38,8 +35,27 @@ is_cmd() {
   fi
 }
 
-is_script() {
-  if [[ -f "$(get_cli_path)/src/script/$1" ]]; then
+try_commands() {
+  if is_cmd $cmd_1; then
+    run_cmd $cmd_1 "${@:3}"
+  elif is_cmd $cmd_2; then
+    run_cmd $cmd_2 "${@:2}"
+  fi
+}
+
+try_scripts() {
+  script_base=$(get_cli_path)/src/script
+  if is_file "$script_base/$script_1"; then
+    run_script $script_1 "${@:4}"
+  elif is_file "$script_2"; then
+    run_script $script_2 "${@:3}"
+  elif is_file "$script_2"; then
+    run_script $script_3 "${@:2}"
+  fi
+}
+
+is_file() {
+  if [[ -f "$1" ]]; then
     return 0
   else
     return 1
@@ -48,6 +64,12 @@ is_script() {
 
 run_script() {
   bash $(get_cli_path)/src/script/$1 ${@:2}
+  exit
+}
+
+run_cmd() {
+  "$1" ${@:2}
+  exit
 }
 
 fn_hello() {
