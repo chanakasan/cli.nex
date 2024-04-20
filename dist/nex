@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source $nex_config_file
 for f in $nex_cli_base/src/main/concerns/*.sh; do
   source $f
 done

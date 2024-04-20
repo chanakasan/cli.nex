@@ -1,4 +1,4 @@
-for f in $nex_plugin_base/*.plugin; do
+for f in $(nex _plugin)/*.plugin; do
   tmp_file=$f/src/entry.sh
   if [ -f "$tmp_file" ]; then
      source $tmp_file
