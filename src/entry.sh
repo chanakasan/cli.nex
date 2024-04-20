@@ -1,5 +1,5 @@
 base_dir="$(dirname "${BASH_SOURCE[0]}")"
-source $base_dir/main/init.sh
+source $base_dir/init/init.sh
 
 # require_global_var nex_cli_base
 # require_global_var nex_support
