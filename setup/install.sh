@@ -18,8 +18,8 @@ main() {
     sudo ln -nfs $symlink_src $symlink_dest_dir/nex
   fi
 
-  echo " => created symlinks"
-  echo " * $symlink_1"
+  echo " => created symlinks at $symlink_dest_dir"
+  echo " done"
   echo
 }
 
