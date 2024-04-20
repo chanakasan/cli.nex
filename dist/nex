@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for f in $nex_cli_base/src/main/concerns/*.sh; do
+for f in $nex_cli_base/src/concerns/*.sh; do
   source $f
 done
 
