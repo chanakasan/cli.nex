@@ -20,9 +20,6 @@ main() {
 
   try_scripts
   try_commands
-
-
-
   
   echo " not_found: $main_cmd"
 }
@@ -83,7 +80,7 @@ fn__config() {
 }
 
 fn__root() {
-  get_root
+  get_root_path $1
 }
 
 fn__plugin() {
@@ -95,30 +92,34 @@ fn__mod() {
 }
 
 get_home() {
-  echo $HOME
+  echo "$(get_nex_root)/.."
 }
 
-get_root() {
-  echo $(get_home)/dotfiles 
+get_nex_root() {
+  echo $HOME/dotfiles 
 }
 
 get_cli_path() {
-  echo $(get_root)/cli.nex
+  echo $(get_nex_root)/cli.nex
 }
 
 get_config_path() {
   echo $(get_cli_path)/dist/config.sh
 }
 
+get_root_path() {
+  echo $(get_nex_root)/$1.nex
+}
+
 get_plugin_path() {
-  echo $(get_root)/plugins/$1.plugin
+  echo $(get_nex_root)/plugins/$1.plugin
 }
 
 get_mod_path() {
   if [[ $1 == "u" ]] || [[ $1 == "user" ]]; then
     echo $(get_home)/user_mod
   else
-    echo $(get_root)/mods/$1.mod
+    echo $(get_nex_root)/mods/$1.mod
   fi 
 }
 
