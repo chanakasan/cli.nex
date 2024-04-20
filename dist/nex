@@ -1,6 +1,9 @@
 #!/bin/bash
 
-source $nex_cli_base/src/main/config.sh
+source $nex_config_file
+for f in $nex_cli_base/src/main/concerns/*.sh; do
+  source $f
+done
 
 main() {
   local main_cmd="nex $1 $2 $3"
@@ -26,112 +29,6 @@ main() {
   echo " not_found: $main_cmd"
 }
 
-try_commands() {
-  try_cmd $cmd_1 "${@:3}"
-  try_cmd $cmd_2 "${@:2}"
-}
 
-try_scripts() {
-  try_script $script_1 "${@:4}"
-  try_script $script_2 "${@:3}"
-  try_script $script_3 "${@:2}"
-}
-
-is_cmd() {
-  if command -v $1 &> /dev/null; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-is_file() {
-  if [[ -f "$1" ]]; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-try_script() {
-  local file=$(get_cli_path)/src/script/$1
-  if is_file $file; then 
-    bash $file ${@:2}
-    exit
-  fi
-}
-
-try_cmd() {
-  if is_cmd $1; then
-    "$1" ${@:2}
-    exit
-  fi
-}
-
-fn_hello() {
-  echo " Hello Nex CLI !"
-  echo " Usage: nex <1> <2> <3>"
-  echo
-}
-
-fn_init() {
-  bash $(get_cli_path)/setup/init.sh
-}
-
-fn__config() {
-  get_config_path
-}
-
-fn__root() {
-  get_root_path $1
-}
-
-fn__plugin() {
-  get_plugin_path $1
-}
-
-fn__mod() {
-  get_mod_path $1
-}
-
-get_home() {
-  echo "$HOME"
-}
-
-get_nex_root() {
-  echo $nex_root
-}
-
-get_cli_path() {
-  echo $nex_cli_base
-}
-
-get_config_path() {
-  echo $(get_cli_path)/src/config.sh
-}
-
-get_root_path() {
-  if [ -z "$1" ]; then
-    echo $(get_nex_root)
-  else
-    echo $(get_nex_root)/$1.nex
-  fi
-}
-
-get_plugin_path() {
-  if [ -z "$1" ]; then
-    echo $(get_nex_root)/plugins
-  else
-    echo $(get_nex_root)/plugins/$1.plugin
-  fi
-}
-
-get_mod_path() {
-  if [[ $1 == "u" ]] || [[ $1 == "user" ]]; then
-    echo $(get_home)/user_mod
-  else
-    echo $(get_nex_root)/mods/$1.mod
-  fi 
-}
 
 main "$@"
