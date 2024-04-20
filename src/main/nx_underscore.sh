@@ -5,5 +5,5 @@ nx_underscore() {
     cmd="rm -i -r"
   fi
 
-  $cmd "$args"
+  $cmd $args
 }
