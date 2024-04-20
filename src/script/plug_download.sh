@@ -1,7 +1,6 @@
-source $(nex _config)
-
 main() {
-  mkdir -p $nex_plugin_base
+  local base_dir=$(nex _plugin)
+  mkdir -p $base_dir
 
   if [[ -z $1 ]]; then
     echo " Usage: nex download plug git|mux|run|tools"
@@ -11,7 +10,7 @@ main() {
 
   local host_user=$(whoami)
   local plugin_name="$1.plugin"
-  cd $nex_plugin_base
+  cd $base_dir
   echo "Downloading Plugin - $plugin_name"
 
   if [[ $host_user == "chk" ]]; then
