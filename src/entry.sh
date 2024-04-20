@@ -1,1 +1,1 @@
-echo "Nex Cli Ready !"
+echo "Nex Cli Ready"

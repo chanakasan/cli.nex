@@ -75,6 +75,11 @@ fn_hello() {
   echo
 }
 
+fn_init() {
+  export nex_support=$(get_cli_path)/support
+  bash $nex_support/install/run_default.sh "cli.nex"
+}
+
 fn__config() {
   get_config_path
 }
@@ -108,7 +113,11 @@ get_config_path() {
 }
 
 get_root_path() {
-  echo $(get_nex_root)/$1.nex
+  if [ -z "$1" ]; then
+    echo $(get_nex_root)
+  else
+    echo $(get_nex_root)/$1.nex
+  fi
 }
 
 get_plugin_path() {
