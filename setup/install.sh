@@ -2,8 +2,11 @@
 
 set -e
 
+nex_root=$HOME/dotfiles
+install_dir=$nex_root/cli.nex
+
 main() {
-  local symlink_src=$(nex _root)/cli.nex/dist/nex
+  local symlink_src=$install_dir/dist/nex
   local symlink_dest_dir=/usr/local/bin
   local symlink_1=$symlink_dest_dir/nex
 
