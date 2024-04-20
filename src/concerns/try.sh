@@ -10,7 +10,7 @@ try_scripts() {
 }
 
 try_script() {
-  local file=$(get_cli_path)/src/script/$1
+  local file=$(get_cli_path)/src/cmd/$1
   if is_file $file; then 
     bash $file ${@:2}
     exit
