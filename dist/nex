@@ -12,9 +12,14 @@ main() {
   local script_3=$1.sh
   local cmd_1=_nx_$1'_'$2
   local cmd_2=_nx_$1
+  local alias_value="$(find_alias $1 $2)"
   if [ "$(type -t $fn_1)" == function ]; then
     $fn_1 ${@:2}
     return 0
+  fi
+  if [ -n "$alias_value" ]; then
+    $alias_value
+    return
   fi
 
   if [ -z "$1" ]; then
