@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $nex_cli_base/src/config.sh
+source $nex_cli_base/src/main/config.sh
 
 main() {
   local main_cmd="nex $1 $2 $3"
