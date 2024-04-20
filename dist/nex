@@ -18,10 +18,21 @@ main() {
     return 1
   fi
 
-  try_scripts
-  try_commands
+  try_scripts $@
+  try_commands $@
   
   echo " not_found: $main_cmd"
+}
+
+try_commands() {
+  try_cmd $cmd_1 "${@:3}"
+  try_cmd $cmd_2 "${@:2}"
+}
+
+try_scripts() {
+  try_script $script_1 "${@:4}"
+  try_script $script_2 "${@:3}"
+  try_script $script_3 "${@:2}"
 }
 
 is_cmd() {
@@ -29,25 +40,6 @@ is_cmd() {
     return 0
   else
     return 1
-  fi
-}
-
-try_commands() {
-  if is_cmd $cmd_1; then
-    run_cmd $cmd_1 "${@:3}"
-  elif is_cmd $cmd_2; then
-    run_cmd $cmd_2 "${@:2}"
-  fi
-}
-
-try_scripts() {
-  script_base=$(get_cli_path)/src/script
-  if is_file "$script_base/$script_1"; then
-    run_script $script_1 "${@:4}"
-  elif is_file "$script_2"; then
-    run_script $script_2 "${@:3}"
-  elif is_file "$script_2"; then
-    run_script $script_3 "${@:2}"
   fi
 }
 
@@ -59,14 +51,19 @@ is_file() {
   fi
 }
 
-run_script() {
-  bash $(get_cli_path)/src/script/$1 ${@:2}
-  exit
+try_script() {
+  local file=$(get_cli_path)/src/script/$1
+  if is_file $file; then 
+    bash $file ${@:2}
+    exit
+  fi
 }
 
-run_cmd() {
-  "$1" ${@:2}
-  exit
+try_cmd() {
+  if is_cmd $1; then
+    "$1" ${@:2}
+    exit
+  fi
 }
 
 fn_hello() {
