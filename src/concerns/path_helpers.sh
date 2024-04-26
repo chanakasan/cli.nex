@@ -22,6 +22,15 @@ get_root_path() {
   fi
 }
 
+get_support_path() {
+  local base=$(get_cli_path)/src/support
+  if [ -z "$1" ]; then
+    echo $base
+  else
+    echo $base/$1/index.sh
+  fi
+}
+
 get_plugin_path() {
   if [ -z "$1" ]; then
     echo $(get_nex_root)/plugins

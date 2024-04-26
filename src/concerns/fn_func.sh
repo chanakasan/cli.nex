@@ -9,10 +9,6 @@ fn_hello() {
   echo " Hello Nex CLI !"
 }
 
-fn_init() {
-  bash $(get_cli_path)/setup/init.sh
-}
-
 fn__config() {
   get_config_path
 }
@@ -27,4 +23,8 @@ fn__plugin() {
 
 fn__mod() {
   get_mod_path $1
+}
+
+fn__support() {
+  get_support_path $1
 }
