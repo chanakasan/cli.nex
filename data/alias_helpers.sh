@@ -1,10 +1,3 @@
-declare -A shortcuts_mapping
-
-shortcuts_mapping=(
-  ["download_git"]="nex plug download git"
-  ["alias"]="vim $nex_cli_base/src/main/concerns/alias.sh"
-)
-
 find_alias() {
   local key_1=$1'_'$2
   local key_2=$1

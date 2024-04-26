@@ -1,0 +1,45 @@
+#!/bin/bash
+
+set -e
+
+tmp_config_path() {
+  local root=$HOME/dotfiles/cli.nex
+  echo $root/src/base/config.sh
+}
+
+source_concerns() {
+  for f in $nex_cli_base/src/concerns/*.sh; do
+    source $f
+  done
+}
+
+source $(tmp_config_path)
+source_concerns
+
+main() {
+  local main_cmd="nex $1 $2 $3"
+  local func_1=fn_$1
+  local script_1=$1'_'$2'_'$3.sh
+  local script_2=$1'_'$2.sh
+  local script_3=$1.sh
+  local cmd_1=_nx_$1'_'$2
+  local cmd_2=_nx_$1
+
+  if [ -z "$1" ]; then
+    print_usage
+    return 1
+  fi
+
+  try_functions $@
+  try_commands $@
+  try_scripts $@
+  
+  echo " not_found: $main_cmd"
+}
+
+print_usage() {
+  echo " Usage: nex <1> <2> <3>"
+  echo
+}
+
+main "$@"

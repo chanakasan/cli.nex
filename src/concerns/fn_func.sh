@@ -1,7 +1,12 @@
+try_functions() {
+  if [ "$(type -t $func_1)" == function ]; then
+    $func_1 ${@:2}
+    exit 0
+  fi
+}
+
 fn_hello() {
   echo " Hello Nex CLI !"
-  echo " Usage: nex <1> <2> <3>"
-  echo
 }
 
 fn_init() {
