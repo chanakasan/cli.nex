@@ -2,12 +2,15 @@
 
 set -e
 
-TEMP_CONFIG=$HOME/dotfiles/cli.nex/setup/config.sh
-source $TEMP_CONFIG
+tmp_config_path() {
+  local root=$HOME/dotfiles/cli.nex
+  echo $root/src/base/config.sh
+}
+source $(tmp_config_path)
 
 main() {
   local install_dir=$nex_cli_base
-  local git_url="https://github.com/chanakasan/cli.nexplugin"
+  local git_url="https://github.com/chanakasan/cli.nex"
   clone_repo
   run_install
 }

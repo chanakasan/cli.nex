@@ -6,7 +6,6 @@ tmp_config_path() {
   local root=$HOME/dotfiles/cli.nex
   echo $root/src/base/config.sh
 }
-
 source $(tmp_config_path)
 
 main() {
