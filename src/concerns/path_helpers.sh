@@ -31,6 +31,15 @@ get_support_path() {
   fi
 }
 
+get_lib_path() {
+  local base=$HOME/groups/lib/bash.lib/src
+  if [ -z "$1" ]; then
+    echo $base
+  else
+    echo $base/$1/index.sh
+  fi
+}
+
 get_plugin_path() {
   if [ -z "$1" ]; then
     echo $(get_nex_root)/plugins

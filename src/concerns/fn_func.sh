@@ -28,3 +28,7 @@ fn__mod() {
 fn__support() {
   get_support_path $1
 }
+
+fn__lib() {
+  get_lib_path $1
+}

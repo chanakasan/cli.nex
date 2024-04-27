@@ -44,11 +44,3 @@ nx_print_path() {
     done
 }
 
-nx_append_dir_to_path() {
-    local dir="$1"
-    if [ -d "$dir" ]; then
-        if [[ ":$PATH:" != *":$dir:"* ]]; then
-            export PATH="$dir:$PATH"
-        fi
-    fi
-}
