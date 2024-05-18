@@ -7,14 +7,14 @@ tmp_config_path() {
   echo $root/src/base/config.sh
 }
 
-source_concerns() {
-  for f in $nex_cli_base/src/concerns/*.sh; do
+source_mixins() {
+  for f in $nex_cli_base/src/mixins/*.sh; do
     source $f
   done
 }
 
 source $(tmp_config_path)
-source_concerns
+source_mixins
 
 main() {
   local main_cmd="nex $1 $2 $3"
