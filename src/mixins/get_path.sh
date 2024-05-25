@@ -50,11 +50,9 @@ get_plugin_path() {
 
 get_mod_path() {
   if [ -z "$1" ]; then
-    echo $(get_nex_root)/mods
-  elif [[ $1 == "u" ]] || [[ $1 == "user" ]]; then
-    echo $(get_home)/user_mod
+    echo $(get_nex_root)/mod
   else
-    echo $(get_nex_root)/mods/$1.mod
+    echo $(get_nex_root)/mod/$1.mod
   fi 
 }
 
