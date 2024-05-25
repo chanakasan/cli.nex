@@ -42,9 +42,9 @@ get_lib_path() {
 
 get_plugin_path() {
   if [ -z "$1" ]; then
-    echo $(get_nex_root)/plugins
+    echo $(get_nex_root)/plugin
   else
-    echo $(get_nex_root)/plugins/$1.plugin
+    echo $(get_nex_root)/plugin/$1.plugin
   fi
 }
 
