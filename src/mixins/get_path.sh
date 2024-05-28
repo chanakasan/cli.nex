@@ -56,3 +56,10 @@ get_mod_path() {
   fi 
 }
 
+get_pak_path() {
+  if [ -z "$1" ]; then
+    echo $(get_nex_root)/pak
+  else
+    echo $(get_nex_root)/pak/$1.pak
+  fi 
+}

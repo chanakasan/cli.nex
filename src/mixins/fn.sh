@@ -25,6 +25,10 @@ fn__mod() {
   get_mod_path $1
 }
 
+fn__pak() {
+  get_pak_path $1
+}
+
 fn__support() {
   get_support_path $1
 }
